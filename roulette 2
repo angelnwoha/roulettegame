@@ -1,0 +1,43 @@
+import random
+
+play = True
+
+while play:
+    def random_colour():
+        choice_colour = random.randint(1, 2)
+
+        if choice_colour == 1:
+            colour = 'red'
+        else:
+            colour = 'black'
+        return colour
+
+
+    def random_roulette():
+        roulette_number = random.randint(1, 100)
+        return roulette_number
+
+
+    bet_money = float(input("How much money do you want to bet? £"))
+    bet_colour = input("Pick a colour to bet on. red or black: ")
+    bet_number = float(input("Pick a whole number from 1 to 100 to bet on"))
+
+    double_winnings = bet_money * 2
+    hundred_winnings = bet_money * 100
+
+    if bet_colour == random_colour():
+        print(f'You chose {bet_colour} and {bet_number}, the computer chose {random_colour()} and {random_roulette()}. You keep your money of £{bet_money}!')
+
+    elif bet_number == random_roulette():
+        print(f'You chose {bet_number} and {bet_colour}, the computer chose {random_roulette()} and {random_colour()}. You win {double_winnings}.')
+
+    elif bet_colour == random_colour() and bet_number == random_roulette():
+        print(f'You chose {bet_colour} and {bet_number}, the computer chose {random_colour()} and {bet_number}. You chose {bet_number}, the computer chose {random_roulette()}. Therefore, you win {hundred_winnings}.')
+
+    else:
+        print(f'You chose {bet_colour} and {bet_number}, the computer chose {random_colour()} and {random_roulette()}. You win nothing.')
+
+    again = str(input("Do you want to play again? Type yes or no."))
+    if again == "no":
+        print("Thank you for playing!")
+        play = False
